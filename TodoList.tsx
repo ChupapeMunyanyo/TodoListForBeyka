@@ -41,6 +41,14 @@ export const TodoList = () => {
     const deleteTodo = (id:number) => {
         setTodoList(todoList.filter(todo => todo.id !== id))
     }
+
+    const getFiltersTodos = () => {
+        switch(filterTodoList) {
+            case 'All' : return 'У вас нет никаких дел'
+            case 'active' : return 'У вас нет активных дел'
+            case 'completed' : return 'У вас нет завершённых дел'
+        }
+    }
   return (
     <div className='todoWrapper'>
         <h1>TodoList</h1>
@@ -55,6 +63,9 @@ export const TodoList = () => {
         </div>
         <ul className="todo-list">
             {
+                filtersTodos.length === 0? (
+                    <span>{getFiltersTodos()}</span>
+                ):
                 filtersTodos.map(todo => (
                     <li key={todo.id} className={todo.completed? 'completed' : ''} >
                         <input type="checkbox" checked={todo.completed} onChange={() => toggleTodo(todo.id)}/>
