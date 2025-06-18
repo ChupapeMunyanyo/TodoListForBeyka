@@ -64,7 +64,7 @@ export const TodoList = () => {
         <ul className="todo-list">
             {
                 filtersTodos.length === 0? (
-                    <span>{getFiltersTodos()}</span>
+                    <span className='getFiltersTodos'>{getFiltersTodos()}</span>
                 ):
                 filtersTodos.map(todo => (
                     <li key={todo.id} className={todo.completed? 'completed' : ''} >
